@@ -8,12 +8,12 @@ require("dotenv").config(); // Load environment variables
 // Environment variables
 const botToken = process.env.BOT_TOKEN;
 const chatId = process.env.CHAT_ID;
-const username = "wabcdefghij37w@gmail.com";
+const username = "wabcdefghij7w@gmail.com";
 const password = process.env.PASSWORD;
 
 const loginUrl = "https://ais.usvisa-info.com/en-et/iv/users/sign_in/iv";
 const scrapeUrl =
-  "https://ais.usvisa-info.com/en-et/iv/schedule/73195101/payment";
+  "https://ais.usvisa-info.com/en-et/iv/schedule/73195996/payment";
 
 // Function to send messages to Telegram
 async function postToTelegram(slotInfo) {
