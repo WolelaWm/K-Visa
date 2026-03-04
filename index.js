@@ -74,16 +74,17 @@ async function automateLogin() {
     await page.waitForNavigation();
 
     const currentUrl = page.url();
-    if (currentUrl.includes("ais.usvisa-info.com/en-et/niv/groups/")) {
+    if (currentUrl.includes("ais.usvisa-info.com/en-et/iv/groups/")) {
       console.log("Login successful, navigating to scrape URL...");
       await page.goto(scrapeUrl, { waitUntil: "networkidle2" });
 
       console.log("Scrape URL loaded, extracting slot information...");
-      await page.waitForSelector("td.text-right", { timeout: 15000 });
+   await page.waitForSelector("table.for-layout", { timeout: 30000 });
 
-      const content = await page.content();
-      const $ = cheerio.load(content);
-      const slotInfo = $("td.text-right").text().trim();
+      const slotInfo = await page.$eval(
+        "table.for-layout td.text-right",
+        (el) => el.textContent.trim(),
+      );
 
       if (slotInfo) {
         console.log(`Slot found: ${slotInfo}`);
